@@ -8,6 +8,7 @@
 ## Dependências
 
 - Python 3.7.4
+- Django >= 3.0
 - PostgreSQL 12.2
 
 ```sh
