@@ -6,11 +6,13 @@ authors = ["Fab lab Joinville <contato@fablabjoinville.com.br>"]
 license = "mit"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "3.8.2"
 django = "^3.0.5"
 psycopg2 = "^2.8.5"
 prettyconf = "^2.1.0"
 dj-database-url = "^0.5.0"
+dj-static = "^0.0.6"
+gunicorn = "^20.0.4"
 
 [tool.poetry.dev-dependencies]
 
