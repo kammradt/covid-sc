@@ -1,7 +1,7 @@
 # COVID-SC APP
 
-- [Dependências](#dependencias)
-- [Configurações](#configuracoes)
+- [Dependências](#dependências)
+- [Configurações](#configurações)
 - [Desenvolvimento](#desenvolvimento)
 - [Deploy](#deploy)
 
@@ -10,15 +10,30 @@
 - Python 3.8.0
 - Django >= 3.0
 - PostgreSQL 12.2
+- Docker Compose
 
 ```sh
 poetry install
 ```
 
 ## Configurações
+
 ```sh
 cp local.env .env
 ```
+
+Subir a base PostgreSQL com o Docker Compose:
+
+```sh
+docker-compose up -d
+```
+
+E rodar as migrações:
+
+```sh
+poetry run python manage.py migrate
+```
+
 **[TODO]**
 
 ## Desenvolvimento
