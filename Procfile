@@ -1,1 +1,1 @@
-web: poetry run gunicorn covid.wsgi --log-file -
+web: gunicorn covid.wsgi --log-file -
