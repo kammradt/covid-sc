@@ -61,3 +61,22 @@ class PatientBed(models.Model):
     bed = models.CharField("Tipo do Leito", blank=False, choices=BedTypes.choices, default=BedTypes.UTIA, max_length=38)
     admission_date = models.DateField("Data de Admissão neste Leito", blank=False, auto_now=False, auto_now_add=False)
     waiting_uti = models.BooleanField("Aguardando UTI", blank=False, default=False)
+
+
+class Report(models.Model):
+    hospital = models.ForeignKey(Hospital, verbose_name="Hospital", on_delete=models.CASCADE)
+
+    report_date = models.DateTimeField("Data do Relatório", blank=False, auto_now=False, auto_now_add=True)
+    informant_name = models.CharField("Nome do Informante", blank=False, max_length=256)
+    informant_function = models.CharField("Função do Informante", blank=False, max_length=256)
+
+
+class Occupation(models.Model):
+    report = models.ForeignKey(Report, verbose_name="Relatório", on_delete=models.CASCADE)
+
+    beds = models.CharField("Tipo do Leito", blank=False, choices=BedTypes.choices, default=BedTypes.UTIA, max_length=38)
+    total = models.IntegerField("Quantidade total de leitos", blank=False, default=0)
+    total_covid = models.IntegerField("Quantidade de leitos para Covid-19", blank=False, default=0)
+    occupation = models.IntegerField("Quantidade de leitos ocupados", blank=False, default=0)
+    occupation_covid = models.IntegerField("Quantidade de leitos ocupados por Covid-19", blank=False, default=0)
+    total_waiting_uti = models.IntegerField("Aguardando UTI", blank=False, default=0)
