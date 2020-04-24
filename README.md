@@ -34,8 +34,6 @@ E rodar as migrações:
 poetry run python manage.py migrate
 ```
 
-**[TODO]**
-
 ## Desenvolvimento
 
 Executando a aplicação no ambiente local:
@@ -46,4 +44,6 @@ poetry run python manage.py runserver
 
 ## Deploy
 
-**[TODO]**
+```sh
+git push heroku master
+```
