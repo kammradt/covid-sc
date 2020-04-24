@@ -45,6 +45,8 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+AUTH_USER_MODEL = 'hospitals.HospitalUser'
+
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
 MIDDLEWARE = [

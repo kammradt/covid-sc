@@ -1,3 +1,4 @@
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 
 
@@ -33,6 +34,18 @@ class Hospital(models.Model):
     city = models.CharField("Cidade", blank=False, max_length=254)
     phonenumber = models.CharField("Telefone", blank=False, max_length=16)
     email = models.EmailField("E-mail", blank=False, max_length=254)
+
+
+class HospitalUser(AbstractBaseUser):
+    username = models.CharField("Usuário", blank=False, max_length=150, unique=True)
+    is_staff = models.BooleanField(default=False)
+
+    hospital = models.ForeignKey(Hospital, verbose_name="Hospital", on_delete=models.CASCADE)
+
+    USERNAME_FIELD = 'username'
+
+    def __str__(self):
+        return f'{self.username} - {self.hospital.name}'
 
 
 class HospitalBed(models.Model):
