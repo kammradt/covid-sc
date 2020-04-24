@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block bodyclass %}text-center registration-container{% endblock %}
+
+{% block content %}
+
+<div class="text-center form-signin">
+<p class="text-center">Logged out!</p>
+<a href="{% url 'login'%}">Click here to login again.</a>
+</div>
+
+{% endblock %}

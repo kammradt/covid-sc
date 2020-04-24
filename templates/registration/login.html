@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block bodyclass %}text-center registration-container{% endblock %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+  <form class="form-signin mt-5" method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <h1 class="h3 mb-3 font-weight-normal text-center">Entrar</h1>
+
+    <label for="inputEmail" class="sr-only">Usuário</label>
+    <input type="email" id="id_username" class="form-control" name="username" placeholder="Usuário" autocapitalize="none" autocomplete="username" maxlength="150" required autofocus>
+
+    <label for="inputPassword" class="sr-only">Senha</label>
+    <input type="password" id="id_password" class="form-control" name="password" placeholder="Senha" autocomplete="current-password" required>
+
+    <div class="mt-3">
+      <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" />
+      <input type="hidden" name="next" value="{{ next }}" />
+      <p class="text-right mt-3"><a href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
+    </div>
+
+    <p class="text-center text-muted">Feito com &#10084; por <br> Fab Lab Joinville & CCT UDESC</p>
+  </form>
+
+{% endblock %}
