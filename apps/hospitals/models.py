@@ -1,5 +1,5 @@
-from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
+from django.conf import settings
 
 
 class AirwaysTypes(models.TextChoices):
@@ -30,28 +30,36 @@ class BedTypes(models.TextChoices):
 
 
 class Hospital(models.Model):
+    acronym = models.CharField("Sigla", blank=False, max_length=150)
     name = models.CharField("Nome", blank=False, max_length=254)
     city = models.CharField("Cidade", blank=False, max_length=254)
     phonenumber = models.CharField("Telefone", blank=False, max_length=16)
     email = models.EmailField("E-mail", blank=False, max_length=254)
 
+    def __str__(self):
+        return f'{self.acronym} - {self.name}'
 
-class HospitalUser(AbstractBaseUser):
-    username = models.CharField("Usuário", blank=False, max_length=150, unique=True)
-    is_staff = models.BooleanField(default=False)
 
+class HospitalUser(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     hospital = models.ForeignKey(Hospital, verbose_name="Hospital", on_delete=models.CASCADE)
 
-    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['user', 'hospital']
+
+    class Meta:
+        ordering = ['user__username']
+        verbose_name = 'Usuário do Hospital'
+        verbose_name_plural = 'Usuários dos Hospitais'
 
     def __str__(self):
-        return f'{self.username} - {self.hospital.name}'
+        return f'{self.user.username} - {self.hospital.name}'
 
 
 class HospitalBed(models.Model):
     hospital = models.ForeignKey(Hospital, verbose_name="Hospital", on_delete=models.CASCADE)
     beds = models.CharField("Tipo do Leito", blank=False, choices=BedTypes.choices, default=BedTypes.UTIA, max_length=38)
-
+    total = models.IntegerField("Total de leitos", blank=False, default=0)
+    total_covid = models.IntegerField("Total de leitos para Covid-19", blank=False, default=0)
 
 class Patient(models.Model):
     hospital = models.ForeignKey(Hospital, verbose_name="Hospital", on_delete=models.CASCADE)

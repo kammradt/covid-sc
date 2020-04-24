@@ -28,10 +28,16 @@ Subir a base PostgreSQL com o Docker Compose:
 docker-compose up -d
 ```
 
-E rodar as migrações:
+Rodar as migrações:
 
 ```sh
 poetry run python manage.py migrate
+```
+
+E criar o usuário para o admin
+
+```sh
+poetry run python manage.py createsuperuser
 ```
 
 ## Desenvolvimento
