@@ -23,23 +23,25 @@
                         <div class="form-row">
                             <div class="col-form-label col-md-6">
                                 <label for="phonenumber">Telefone*:</label>
-                                <input type="text" class="form-control" id="phonenumber" aria-describedby="phonenumber">
+                                <input type="text" class="form-control" id="phonenumber" aria-describedby="phonenumber"
+                                       value="{{ hospital.phonenumber }}" readonly>
                             </div>
                             <div class="col-form-label col-md-6">
                                 <label for="email">E-mail*:</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="email">
+                                <input type="email" class="form-control" id="email" aria-describedby="email"
+                                       value="{{ hospital.email }}" readonly>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-form-label col-md-6">
                                 <label for="informant_name">Nome do Informante*:</label>
                                 <input type="text" class="form-control" id="informant_name"
-                                       aria-describedby="informant_name">
+                                       aria-describedby="informant_name" value="{{ report.informant_name }}" readonly>
                             </div>
                             <div class="col-form-label col-md-6">
                                 <label for="informant_function">Função*:</label>
                                 <input type="text" class="form-control" id="informant_function"
-                                       aria-describedby="informant_function">
+                                       aria-describedby="informant_function" value="{{ report.informant_function }}" readonly>
                             </div>
                         </div>
                     </div>
