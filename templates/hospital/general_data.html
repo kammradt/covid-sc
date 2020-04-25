@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <main role="main" class="inner cover">
+            <h2>Dados Gerais:</h2>
+            <div class="container">
+                <form>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-form-label col-md-6">
+                                <label for="hospital">Hospital: </label>
+                                <input type="text" class="form-control" id="hospital" value="{{ hospital.name }}"
+                                       aria-describedby="hospital" readonly>
+                            </div>
+                            <div class="col-form-label col-md-6">
+                                <label for="city">Município: </label>
+                                <input type="text" class="form-control" id="city" value="{{ hospital.city }}"
+                                       aria-describedby="city" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-form-label col-md-6">
+                                <label for="phonenumber">Telefone*:</label>
+                                <input type="text" class="form-control" id="phonenumber" aria-describedby="phonenumber">
+                            </div>
+                            <div class="col-form-label col-md-6">
+                                <label for="email">E-mail*:</label>
+                                <input type="text" class="form-control" id="email" aria-describedby="email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-form-label col-md-6">
+                                <label for="informant_name">Nome do Informant*:</label>
+                                <input type="text" class="form-control" id="informant_name"
+                                       aria-describedby="informant_name">
+                            </div>
+                            <div class="col-form-label col-md-6">
+                                <label for="informant_function">Função*:</label>
+                                <input type="text" class="form-control" id="informant_function"
+                                       aria-describedby="informant_function">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+{% endblock %}
